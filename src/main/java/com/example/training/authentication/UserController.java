@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -24,6 +25,10 @@ public class UserController {
             if (userRepository.findByUsername(user.getUsername()).isPresent())
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already taken. Please try again");
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            if (user.getId() == null || user.getId().isEmpty()) {
+                user.setId(UUID.randomUUID().toString());
+            }
+            user.setActive(true);
             AuthUser save = userRepository.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(save);
 //            return ResponseEntity.ok(HttpStatus.CREATED);
