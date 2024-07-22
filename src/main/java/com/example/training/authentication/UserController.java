@@ -31,7 +31,6 @@ public class UserController {
             user.setActive(true);
             AuthUser save = userRepository.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(save);
-//            return ResponseEntity.ok(HttpStatus.CREATED);
         } catch (Exception e){
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
