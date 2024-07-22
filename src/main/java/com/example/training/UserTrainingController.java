@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/trainings")
-@CrossOrigin(origins = "*")
 public class UserTrainingController {
 
     @Autowired

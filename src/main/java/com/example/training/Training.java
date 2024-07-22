@@ -17,7 +17,6 @@ public class Training {
     @Id
     private ObjectId id;
     private LocalDateTime date;
-//    private String type;
     private TrainingType type;
     private int duration;
     private int caloriesBurned;
